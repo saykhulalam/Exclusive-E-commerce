@@ -12,6 +12,7 @@ export default {
       },
       colors: {
         'praymari': '#24c5a',
+        'prymari-red': '#DB4444',
       },
     },
   },
