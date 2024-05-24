@@ -2,6 +2,7 @@ import React from 'react'
 import { Outlet } from 'react-router-dom';
 import Hader from '../Hader';
 import Nave from '../Nave';
+import Footer from '../Footer';
 
 const RootLayout = () => {
   return (
@@ -9,6 +10,7 @@ const RootLayout = () => {
     <Hader/>
     <Nave/>
     <Outlet/>
+    <Footer/>
     </>
   )
 }

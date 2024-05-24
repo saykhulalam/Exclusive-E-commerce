@@ -14,6 +14,10 @@ export default {
         'praymari': '#24c5a',
         'prymari-red': '#DB4444',
       },
+      screens: {
+        'rotet': '1002px',
+        // => @media (min-width: 640px) { ... }
+      },
     },
   },
   plugins: [],
