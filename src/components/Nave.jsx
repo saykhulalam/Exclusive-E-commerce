@@ -36,20 +36,20 @@ const Nave = () => {
             <div
               className={`lg:flex gap-[180px] ${
                 manuShow ? "lg:flex" : "hidden"
-              } absolute lg:static top-[100px] mt-4 bg-black lg:bg-transparent items-center p-5 lg:p-0`}
+              } absolute lg:static top-[100px] mt-4 backdrop-blur-xl backdrop-brightness-50 lg:backdrop-brightness-200 lg:bg-transparent items-center p-5 lg:p-0`}
             >
               <List className="lg:flex gap-[48px]">
                 <ListItem className=" select-none text-white lg:text-black after:duration-500 text-[16px] font-popins leading-[24px] text-black font-normal after:contents-[''] after:w-0 lg:hover:after:w-full duration-500 after:h-[1px] after:absolute after:bg-black after:bottom-0 relative after:left-0 after:top-6 mb-2">
                   <Link to="/">Home</Link>
                 </ListItem>
                 <ListItem className=" select-none text-white lg:text-black after:duration-500 text-[16px] font-popins leading-[24px] text-black font-normal after:contents-[''] after:w-0 lg:hover:after:w-full duration-500 after:h-[1px] after:absolute after:bg-black after:bottom-0 relative after:left-0 after:top-6 mb-2">
-                  <Link to="/contact">Contact</Link>
+                  <Link to="/Contact">Contact</Link>
                 </ListItem>
                 <ListItem className=" select-none text-white lg:text-black after:duration-500 text-[16px] font-popins leading-[24px] text-black font-normal after:contents-[''] after:w-0 lg:hover:after:w-full duration-500 after:h-[1px] after:absolute after:bg-black after:bottom-0 relative after:left-0 after:top-6 mb-2">
-                  <Link>About</Link>
+                  <Link to="/About">About</Link>
                 </ListItem>
                 <ListItem className=" select-none text-white lg:text-black after:duration-500 text-[16px] font-popins leading-[24px] text-black font-normal after:contents-[''] after:w-0 lg:hover:after:w-full duration-500 after:h-[1px] after:absolute after:bg-black after:bottom-0 relative after:left-0 after:top-6 mb-2">
-                  <Link to="/create-account">Sign Up</Link>
+                  <Link to="/Create-account">Sign Up</Link>
                 </ListItem>
               </List>
               <Flex className="lg:flex-row flex-col lg:items-center gap-[24px]">

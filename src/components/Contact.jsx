@@ -64,7 +64,7 @@ const Contact = () => {
               placeholder="Your Massage"
             ></textarea>
             <div className="lg:ml-[72%] ml-20">
-              <button className="w-[215px] h-[56px] bg-prymari-red rounded-[4px] text-[16px] text-white font-popins font-medium leading-[24px] mt-[32px]">
+              <button className="w-[215px] h-[56px] bg-prymari-red rounded-[4px] text-[16px] text-white font-popins font-medium leading-[24px] mt-[32px] mb-11">
                 Send Massage
               </button>
             </div>

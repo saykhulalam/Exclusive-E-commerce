@@ -10,14 +10,16 @@ import Home from "../src/pages/Home";
 import Login from "./components/Login";
 import CreateAccount from "./components/CreateAccount";
 import Contact from "./components/Contact";
+import About from "./components/About";
 
 
 const router = createBrowserRouter(
   createRoutesFromElements(<Route path="/" element={<RootLayout/>}>
     <Route index element={<Home/>}></Route>
-    <Route path="/login" element={<Login/>}></Route>
-    <Route path="/create-account" element={<CreateAccount/>}></Route>
-    <Route path="/contact" element={<Contact/>}></Route>
+    <Route path="/Login" element={<Login/>}></Route>
+    <Route path="/Create-account" element={<CreateAccount/>}></Route>
+    <Route path="/Contact" element={<Contact/>}></Route>
+    <Route path="/About" element={<About/>}></Route>
   </Route>)
 );
 

@@ -20,7 +20,7 @@ const BannerList = () => {
       <List
         className={`lg:pt-[40px] pt-3 border-r ${
           manuShow ? "hidden" : "block"
-        } lg:block absolute z-20 bg-black lg:bg-transparent lg:p-0 lg:pr-4 p-4 rounded-lg`}
+        } lg:block absolute z-20 backdrop-blur-xl lg:backdrop-brightness-200 backdrop-brightness-50 lg:bg-transparent lg:p-0 lg:pr-4 p-4 rounded-lg`}
       >
         <ListItem className=" text-white text-[18px] font-popins font-normal leading-[24px] lg:text-black mb-[16px] flex gap-[35px] items-center">
           Woman’s Fashion {true ? <FaAngleRight /> : ""}

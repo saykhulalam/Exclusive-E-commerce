@@ -16,7 +16,7 @@ const Banner = () => {
     slidesToScroll: 1,
     appendDots: (dots) => (
       <div style={{
-        margin: "0px", position: 'absolute', left: '50%', transform: 'transLateX(-50%)', bottom:'5%'
+        margin: "0px", position: 'absolute', left: '50%', transform: 'transLateX(-50%)', bottom:'5%',
       }}>
         <ul style={{
           display: 'flex',
