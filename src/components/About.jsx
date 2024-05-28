@@ -52,13 +52,39 @@ const About = () => {
         }}
       ></div>
     ),
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: false,
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
   };
 
   return (
-    <section className="mt-20">
+    <section className="lg:mt-20 mt-10">
       <Container>
-        <Flex className=" items-center gap-[75px]">
-          <div className="w-[50%]">
+        <Flex className=" items-center gap-10 lg:gap-[75px] lg:flex-row flex-col">
+          <div className="lg:w-[50%]">
             <h2 className="text-[54px] font-inter font-semibold leading-[64px] text-black mb-[40px]">
               Our Story
             </h2>
@@ -75,11 +101,11 @@ const About = () => {
               ranging from consumer.
             </p>
           </div>
-          <div className="w-[50%]">
+          <div className="lg:w-[50%]">
             <Image src={aboutBannerImg} />
           </div>
-        </Flex>
-        <Flex className="justify-between mt-[140px]">
+        </Flex >
+        <Flex className="ljustify-between mt-16 lg:mt-[140px] items-center lg:gap-0 gap-5 lg:flex-row flex-col">
           <AboutCategory
             IconUrl={<FaStore />}
             Count="10.5k"

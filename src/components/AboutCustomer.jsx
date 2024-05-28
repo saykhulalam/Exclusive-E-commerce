@@ -7,9 +7,9 @@ import { FaLinkedinIn } from "react-icons/fa6";
 
 const AboutCustomer = ({ ImageUrl, Name, Paragraph }) => {
   return (
-    <div>
+    <div className="sm:m-2">
       <Image src={ImageUrl} />
-      <h2 className="text-[32px] font-inter leading-[30px] font-medium text-black mb-[8px] mt-[32px]">
+      <h2 className="text-[32px] font-inter leading-[30px] font-medium text-black mb-[8px] mt-[32px] sm:text-[25px]">
         {Name}
       </h2>
       <p className="text-[16px] font-popins font-normal leading-[24px] text-black mb-[16px]">
