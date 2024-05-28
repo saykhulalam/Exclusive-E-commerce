@@ -105,7 +105,7 @@ const About = () => {
             <Image src={aboutBannerImg} />
           </div>
         </Flex >
-        <Flex className="ljustify-between mt-16 lg:mt-[140px] items-center lg:gap-0 gap-5 lg:flex-row flex-col">
+        <Flex className="lg:justify-between mt-16 lg:mt-[140px] items-center lg:gap-0 gap-5 lg:flex-row flex-col sm:flex-row sm:justify-evenly sm:flex-wrap">
           <AboutCategory
             IconUrl={<FaStore />}
             Count="10.5k"
@@ -127,7 +127,7 @@ const About = () => {
             Paragraph="Anual gross sale in our site"
           />
         </Flex>
-        <Slider {...settings} className="mt-[140px]">
+        <Slider {...settings} className="lg:mt-[140px] mt-20">
           <AboutCustomer
             ImageUrl={AboutImgCustomerOne}
             Name="Tom Cruise"

@@ -8,9 +8,9 @@ import Flex from "./Flex";
 
 const Service = () => {
   return (
-    <section className=" mt-[80px] lg:mt-[140px]">
+    <section className=" mt-[130px] lg:mt-[140px]">
       <Container>
-        <Flex className=" justify-between gap-3">
+        <Flex className=" flex-wrap justify-center gap-8 lg:justify-between gap-3">
           <ServiceItem
             ImageUrl={serviceImgOne}
             Hading="FREE AND FAST DELIVERY"
