@@ -15,6 +15,7 @@ import { RxCrossCircled } from "react-icons/rx";
 import { TbLogout2 } from "react-icons/tb";
 import { FaRegStar } from "react-icons/fa6";
 import Flex from "../components/Flex";
+import Logo from '/public/images/Logo.png'
 
 const Nave = () => {
   let [manuShow, setManuShow] = useState(false);
@@ -32,7 +33,7 @@ const Nave = () => {
         <Container>
           <div className="flex justify-between items-center">
             <Link to="/">
-              <Image src="public/images/logo.png" alt="logo" />
+              <Image src={Logo} alt="logo" />
             </Link>
             <div
               className={`lg:flex rotet:gap-[50px] gap-[180px] ${
