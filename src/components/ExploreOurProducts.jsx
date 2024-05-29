@@ -113,7 +113,7 @@ const ExploreOurProducts = () => {
         breakpoint: 442,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 3,
+          slidesToScroll: 1,
           infinite: true,
           dots: false,
           nextArrow: "",
@@ -129,7 +129,7 @@ const ExploreOurProducts = () => {
       <Container>
         <Taitel subtaitel="Our Products" taitel="Explore Our Products" />
         <div className="slider-container">
-          <Slider {...settings}>
+          <Slider {...settings} className="">
             <OurProducts
               name="Breed Dry Dog Food"
               prize="$100"

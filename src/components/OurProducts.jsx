@@ -5,10 +5,10 @@ import Flex from "./Flex";
 import { FaRegHeart } from "react-icons/fa6";
 import { IoEyeSharp } from "react-icons/io5";
 
-const OurProducts = ({ imageurl, name, prize, count }) => {
+const OurProducts = ({ imageurl, name, prize, count, marzin }) => {
   return (
     <div>
-      <div className=" w-full lg:w-[270px] mt-[40px] sm:px-4 md:px-2">
+      <div className="w-[270px] md:w-[240px] lg:w-[250px] mt-[40px] sm:px-4 md:px-2">
         <div className=" bg-[#F5F5F5] w-full h-[250px] rounded-[4px] flex justify-center items-center relative  group-hover:w-[270px] group overflow-hidden">
           <Image src={imageurl} />
           <div className=" absolute right-2 top-2">
@@ -29,7 +29,7 @@ const OurProducts = ({ imageurl, name, prize, count }) => {
           <h3 className="text-[16px] font-popins font-medium leading-[24px] text-black mb-[8px]">
             {name}
           </h3>
-          <Flex className='gap-[8px]'>
+          <Flex className="gap-[8px]">
             <div className="flex gap-[12px] items-center mb-[8px]">
               <h3 className="text-[16px] font-popins font-medium leading-[24px] text-prymari-red">
                 {prize}

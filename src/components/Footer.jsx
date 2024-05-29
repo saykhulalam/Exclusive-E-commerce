@@ -18,8 +18,8 @@ const Footer = () => {
   return (
     <section className="bg-black pt-[80px] pb-[24px] mt-[80px] lg:mt-[140px]">
       <Container>
-        <div className=" grid grid-cols-10 lg:gap-[57px] gap-[30px] items-center lg:p-0 pl-3">
-          <div className=" lg:col-span-2 col-span-5 rotet:col-span-3">
+        <Flex className=" justify-between lg:flex-row flex-wrap gap-10">
+          <div className="">
             <h2 className="text-[24px] font-bold font-inter leading-[24px] tracking-[1px] text-white mb-[24px]">
               Exclusive
             </h2>
@@ -32,15 +32,15 @@ const Footer = () => {
               </ListItem>
               <div className=" relative">
                 <input
-                  className="lg:w-[217px] md:w-[217px] w-[150px] h-[48px] bg-transparent rounded-[4px] border-[1px] border-[#FAFAFA] text-[10px] md:text-[16px] lg:text-[16px] font-normal font-popins leading-[24px] pl-[16px] mt-[16px]"
+                  className="w-[217px] h-[48px] bg-transparent rounded-[4px] border-[1px] border-[#FAFAFA] text-[16px] font-normal font-popins leading-[24px] pl-[16px] mt-[16px]"
                   placeholder="Enter your email"
                   type="text"
                 />
-                <LuSendHorizonal className="text-[#FAFAFA] lg:text-[24px] md:text-[24px] text-[15px] absolute left-[120px] lg:left-[170px] md:left-[170px] top-[28px]" />
+                <LuSendHorizonal className="text-[#FAFAFA] text-[24px]  absolute  left-[170px]  top-[28px]" />
               </div>
             </List>
           </div>
-          <div className="lg:col-span-2 col-span-5 lg:pb-4 rotet:col-span-3">
+          <div>
             <h2 className="text-[24px] font-bold font-inter leading-[24px] tracking-[1px] text-white mb-[24px]">
               Support
             </h2>
@@ -56,7 +56,7 @@ const Footer = () => {
               </ListItem>
             </List>
           </div>
-          <div className="lg:col-span-2 col-span-5 rotet:col-span-3">
+          <div>
             <h2 className="text-[24px] font-bold font-inter leading-[24px] tracking-[1px] text-white mb-[24px]">
               Account
             </h2>
@@ -76,7 +76,7 @@ const Footer = () => {
               </ListItem>
             </List>
           </div>
-          <div className="lg:col-span-2 col-span-5 rotet:col-span-3">
+          <div>
             <h2 className="text-[24px] font-bold font-inter leading-[24px] tracking-[1px] text-white mb-[24px]">
               Quick Link
             </h2>
@@ -96,7 +96,7 @@ const Footer = () => {
               </ListItem>
             </List>
           </div>
-          <div className="lg:col-span-2 col-span-5">
+          <div>
             <h2 className="text-[24px] font-bold font-inter leading-[24px] tracking-[1px] text-white mb-[24px]">
               Download App
             </h2>
@@ -127,7 +127,7 @@ const Footer = () => {
               </Link>
             </div>
           </div>
-        </div>
+        </Flex>
         <hr className="mt-[60px] mb-[24px]" />
         <h5 className="text-white text-[16px] leading-[24px] font-popins text-center tracking-[1px] font-normal">
           {" "}

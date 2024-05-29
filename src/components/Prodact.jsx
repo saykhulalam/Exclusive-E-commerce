@@ -5,33 +5,31 @@ import Flex from "./Flex";
 import { FaRegHeart } from "react-icons/fa6";
 import { IoEyeSharp } from "react-icons/io5";
 
-
-
-
-
-const Prodact = ({imageurl, name, prize, cross, offer}) => {
+const Prodact = ({ imageurl, name, prize, cross, offer }) => {
   return (
     <>
-      <div className=" w-full lg:w-[270px] mt-[40px] sm:px-4 md:px-2">
+      <div className=" w-[270px] rotet:w-[250px] lg:w-[270px] mt-[40px] sm:px-4 md:px-2">
         <div className=" bg-[#F5F5F5] w-full h-[250px] rounded-[4px] flex justify-center items-center relative  group-hover:w-[270px] group overflow-hidden">
           <Image src={imageurl} />
-          {offer && 
-          <div className="w-[55px] h-[26px] bg-prymari-red flex items-center justify-center rounded-[4px] absolute left-2 top-2">
-          <h4 className="text-[12px] leading-[18px] font-popins font-normal text-white">
-            {offer}
-          </h4>
-        </div>
-          }
+          {offer && (
+            <div className="w-[55px] h-[26px] bg-prymari-red flex items-center justify-center rounded-[4px] absolute left-2 top-2">
+              <h4 className="text-[12px] leading-[18px] font-popins font-normal text-white">
+                {offer}
+              </h4>
+            </div>
+          )}
           <div className=" absolute right-2 top-2">
             <div className="w-[34px] h-[34px] bg-white rounded-full flex justify-center items-center mb-[8px]">
-            <FaRegHeart className="text-[24px] text-black" />
+              <FaRegHeart className="text-[24px] text-black" />
             </div>
             <div className="w-[34px] h-[34px] bg-white rounded-full flex justify-center items-center">
-            <IoEyeSharp className="text-[27px] text-black" />
+              <IoEyeSharp className="text-[27px] text-black" />
             </div>
           </div>
           <button className=" group-hover:bottom-0 duration-300 w-full py-[8px] bg-black absolute flex items-center justify-center bottom-[-100%]">
-            <h2 className="text-[16px] text-white leading-[24px] font-popins">Add To Cart</h2>
+            <h2 className="text-[16px] text-white leading-[24px] font-popins">
+              Add To Cart
+            </h2>
           </button>
         </div>
         <div className=" mt-[16px]">

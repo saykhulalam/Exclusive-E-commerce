@@ -13,7 +13,7 @@ const Arrival = () => {
     <section className="mt-[100px]">
       <Container>
         <Taitel subtaitel="Featured" taitel="New Arrival" />
-        <Flex className="lg:flex-row lg:gap-8 flex-col justify-between gap-[20px] mt-6 lg:mt-[60px] md:flex-col">
+        <Flex className="lg:flex-row lg:gap-8 flex-col justify-between gap-[20px] mt-6 lg:mt-[60px]  lg:p-0 md:flex-col">
           <Link>
             <Image src={ArrivalImgOne} alt="image" />
           </Link>
@@ -21,7 +21,7 @@ const Arrival = () => {
             <Link>
               <Image className=" mb-[15px]" src={ArrivalImgTow} alt="image" />
             </Link>
-            <Flex className="lg:justify-between gap-6  flex-col lg:flex-row md:flex-row ">
+            <Flex className="lg:justify-between gap-6  flex-col lg:flex-row md:flex-row sm:flex-row ">
               <Link>
                 <Image src={ArrivalImgThree} alt="image" />
               </Link>

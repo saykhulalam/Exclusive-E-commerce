@@ -4,19 +4,18 @@ export default {
   theme: {
     extend: {
       maxWidth: {
-        'container': '1170px',
+        container: "1170px",
       },
       fontFamily: {
-        'popins': ['"Poppins", "sans-serif"'],
-        'inter': ['"Inter", "sans-serif"'],
+        popins: ['"Poppins", "sans-serif"'],
+        inter: ['"Inter", "sans-serif"'],
       },
       colors: {
-        'praymari': '#24c5a',
-        'prymari-red': '#DB4444',
+        praymari: "#24c5a",
+        "prymari-red": "#DB4444",
       },
       screens: {
-        'rotet': '1002px',
-        // => @media (min-width: 640px) { ... }
+        rotet: "1024px",
       },
     },
   },

@@ -17,7 +17,7 @@ const BestSellingProducts = () => {
         <Taitel className='' subtaitel='This Month' taitel='Best Selling Products'/>
         <SellingProductsBtn/>
         </Flex >
-        <Flex className=' justify-between flex-wrap'>
+        <Flex className=' justify-between flex-row flex-wrap sm:flex-row '>
         <Prodact imageurl={jacket} prize='$260' cross='$$360' name='The north coat'/>
         <Prodact imageurl={bag} prize='$960' cross='$1160' name='Gucci duffle bag'/>
         <Prodact imageurl={box} prize='$160' cross='$170' name='RGB liquid CPU Cooler'/>

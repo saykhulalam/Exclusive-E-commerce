@@ -11,6 +11,7 @@ import Login from "./components/Login";
 import CreateAccount from "./components/CreateAccount";
 import Contact from "./components/Contact";
 import About from "./components/About";
+import Shop from "./pages/Shop";
 
 
 const router = createBrowserRouter(
@@ -20,6 +21,7 @@ const router = createBrowserRouter(
     <Route path="/Create-account" element={<CreateAccount/>}></Route>
     <Route path="/Contact" element={<Contact/>}></Route>
     <Route path="/About" element={<About/>}></Route>
+    <Route path="/Shop" element={<Shop/>}></Route>
   </Route>)
 );
 

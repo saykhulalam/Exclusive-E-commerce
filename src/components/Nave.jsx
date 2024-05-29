@@ -24,7 +24,6 @@ const Nave = () => {
   };
   let handleAccount = () => {
     setAccountManuShow(!accountManuShow);
-    console.log(accountManuShow);
   };
 
   return (
@@ -32,13 +31,15 @@ const Nave = () => {
       <nav className="pt-[40px] pb-[23px] relative z-10">
         <Container>
           <div className="flex justify-between items-center">
-            <Image src="public/images/logo.png" alt="logo" />
+            <Link to="/">
+              <Image src="public/images/logo.png" alt="logo" />
+            </Link>
             <div
-              className={`lg:flex gap-[180px] ${
+              className={`lg:flex rotet:gap-[50px] gap-[180px] ${
                 manuShow ? "lg:flex" : "hidden"
               } absolute lg:static top-[100px] mt-4 backdrop-blur-xl backdrop-brightness-50 lg:backdrop-brightness-200 lg:bg-transparent items-center p-5 lg:p-0`}
             >
-              <List className="lg:flex gap-[48px]">
+              <List className="lg:flex gap-[48px] rotet:gap-[30px]">
                 <ListItem className=" select-none text-white lg:text-black after:duration-500 text-[16px] font-popins leading-[24px] text-black font-normal after:contents-[''] after:w-0 lg:hover:after:w-full duration-500 after:h-[1px] after:absolute after:bg-black after:bottom-0 relative after:left-0 after:top-6 mb-2">
                   <Link to="/">Home</Link>
                 </ListItem>
@@ -78,7 +79,7 @@ const Nave = () => {
               className=" border-[3px] p-[2px] rounded-[4px] text-[40px] lg:hidden"
             />
             <div
-              className={`w-[225px] h-[260px] backdrop-blur-3xl backdrop-saturate-200 backdrop-brightness-50	  absolute lg:right-[250px] md:right-[200px] rotet:right-[450px] md:top-[120px] lg:top-[110px] top-[395px] py-[15px] px-[15px] rounded-[4px] ${
+              className={`w-[225px] h-[260px] backdrop-blur-3xl backdrop-saturate-200 backdrop-brightness-50	  absolute lg:right-[250px] md:right-[200px] md:top-[120px] lg:top-[110px] top-[395px] py-[15px] px-[15px] rounded-[4px] rotet:right-5 rotet:top-32 ${
                 accountManuShow ? "hidden" : "block"
               }`}
             >
