@@ -4,8 +4,9 @@ import { FaStar } from "react-icons/fa";
 import Flex from "./Flex";
 import { FaRegHeart } from "react-icons/fa6";
 import { IoEyeSharp } from "react-icons/io5";
+import { Rate } from "antd";
 
-const Prodact = ({ imageurl, name, prize, cross, offer }) => {
+const Prodact = ({ imageurl, name, prize, cross, offer,rating }) => {
   return (
     <>
       <div className=" w-[270px] rotet:w-[250px] lg:w-[270px] mt-[40px] sm:px-4 md:px-2">
@@ -45,13 +46,8 @@ const Prodact = ({ imageurl, name, prize, cross, offer }) => {
             </del>
           </div>
           <div className="flex gap-[8px] items-center">
-            <Flex className="gap-1">
-              <FaStar className="text-[20px] text-[#FFAD33]" />
-              <FaStar className="text-[20px] text-[#FFAD33]" />
-              <FaStar className="text-[20px] text-[#FFAD33]" />
-              <FaStar className="text-[20px] text-[#FFAD33]" />
-              <FaStar className="text-[20px] text-[#FFAD33]" />
-            </Flex>
+            <Rate value={rating} disabled />
+
             <h3 className="text-[14px] font-popins font-semibold leading-[21px]">
               (88)
             </h3>

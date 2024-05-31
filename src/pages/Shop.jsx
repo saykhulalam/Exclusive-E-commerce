@@ -1,137 +1,98 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Breadcrumb from "../components/Breadcrumb";
 import Container from "../components/Container";
 import Flex from "../components/Flex";
 import Hading from "../components/Hading";
 import List from "../components/List";
 import ListItem from "../components/ListItem";
-import Prodact from "../components/Prodact";
-import monitor from "../assets/monitor.png";
+import { TbCategory } from "react-icons/tb";
+import { FaChevronDown } from "react-icons/fa";
+import Color from "../components/Color";
+import axios from "axios";
+import ShopByProduct from "../components/ShopByProduct";
+
 const Shop = () => {
+  let [shopManuShow, setshopManushow] = useState(true);
+  
+  let [allProduct, setallProducat] = useState([]);
+
+  let [loding, setLoding]= useState(true)
+  async function getAllProduct() {
+    let data = await axios.get("https://dummyjson.com/products/search?q=phone");
+    setallProducat(data.data.products);
+    setLoding(false)
+  }
+
+  useEffect(() => {
+    getAllProduct();
+  }, []);
+
+
   return (
-    <div>
+    <section className=" lg:pt-[80px] pt-10">
       <Container>
         <Breadcrumb />
-        <Flex className='lg:flex-row flex-col'>
-          <div className="lg:w-[20%]">
-            <Hading Name="Shop by Category" className=" mb-[15px] mt-[50px]" />
-            <List className=" mt-[15px]">
-              <ListItem className=" text-[16px] font-normal font-popins leading-[24px] text-black mb-[16px]">
+        <Flex className="lg:flex-row flex-col">
+          <div className="lg:w-[20%] relative">
+            <div
+              onClick={() => setshopManushow(!shopManuShow)}
+              className="flex items-center border-[1px] gap-2 text-[15px] font-popins border-gray-500 w-[180px] p-1 rounded-[5px] mt-4 select-none sm:select-none md:select-none hover:bg-black hover:text-white duration-300  relative lg:hidden"
+            >
+              <TbCategory className="text-[20px]" />
+              <h2>Shop Category</h2>
+              <FaChevronDown />
+            </div>
+            <Hading
+              Name="Shop by Category"
+              className=" lg:mb-[15px] mt-[50px] hidden lg:block"
+            />
+            <List
+              className={`mt-[15px] lg:block lg:bg-transparent bg-black lg:p-0 pl-2 py-4 rounded-lg w-[180px] lg:w-full absolute lg:static z-10 top-12  ${
+                shopManuShow ? "hidden" : "block"
+              }`}
+            >
+              <ListItem className=" text-[16px] font-normal font-popins leading-[24px] text-white lg:text-black lg:mb-[16px] mb-[14px]">
                 Woman’s Fashion
               </ListItem>
-              <ListItem className=" text-[16px] font-normal font-popins leading-[24px] text-black mb-[16px]">
+              <ListItem className=" text-[16px] font-normal font-popins leading-[24px] text-white lg:text-black lg:mb-[16px] mb-[14px]">
                 Men’s Fashion
               </ListItem>
-              <ListItem className=" text-[16px] font-normal font-popins leading-[24px] text-black mb-[16px]">
+              <ListItem className=" text-[16px] font-normal font-popins leading-[24px] text-white lg:text-black lg:mb-[16px] mb-[14px]">
                 Electronics
               </ListItem>
-              <ListItem className=" text-[16px] font-normal font-popins leading-[24px] text-black mb-[16px]">
+              <ListItem className=" text-[16px] font-normal font-popins leading-[24px] text-white lg:text-black lg:mb-[16px] mb-[14px]">
                 Home & Lifestyle
               </ListItem>
-              <ListItem className=" text-[16px] font-normal font-popins leading-[24px] text-black mb-[16px]">
+              <ListItem className=" text-[16px] font-normal font-popins leading-[24px] text-white lg:text-black lg:mb-[16px] mb-[14px]">
                 Medicine
               </ListItem>
-              <ListItem className=" text-[16px] font-normal font-popins leading-[24px] text-black mb-[16px]">
+              <ListItem className=" text-[16px] font-normal font-popins leading-[24px] text-white lg:text-black lg:mb-[16px] mb-[14px]">
                 Sports & Outdoor
               </ListItem>
-              <ListItem className=" text-[16px] font-normal font-popins leading-[24px] text-black mb-[16px]">
+              <ListItem className=" text-[16px] font-normal font-popins leading-[24px] text-white lg:text-black lg:mb-[16px] mb-[14px]">
                 Baby’s & Toys
               </ListItem>
-              <ListItem className=" text-[16px] font-normal font-popins leading-[24px] text-black mb-[16px]">
+              <ListItem className=" text-[16px] font-normal font-popins leading-[24px] text-white lg:text-black lg:mb-[16px] mb-[14px]">
                 Groceries & Pets
               </ListItem>
-              <ListItem className=" text-[16px] font-normal font-popins leading-[24px] text-black mb-[16px]">
+              <ListItem className=" text-[16px] font-normal font-popins leading-[24px] text-white lg:text-black lg:mb-[16px] mb-[14px]">
                 Health & Beauty
               </ListItem>
             </List>
+            <Hading Name="Shop by Color" className=" mt-[40px]" />
+
+            <div className="">
+              <Color Name="black" Color=" bg-black" />
+              <Color Name="red" Color=" bg-red-500" />
+              <Color Name="green" Color=" bg-green-600" />
+            </div>
           </div>
           <div className="lg:w-[80%]">
-            <div className=" flex justify-end mt-[50px]">
-              <select
-                id="countries"
-                className="w-[140px] p-1 text-[15px] rounded-lg font-popins  font-normal leading-[21px] border-2"
-              >
-                <option selected="">6</option>
-                <option value="US">12</option>
-                <option value="US">24</option>
-                <option value="US">40</option>
-              </select>
-            </div>
-            <Flex className=" flex-wrap justify-between lg:flex-row flex-col items-center sm:flex-row rotet:justify-normal">
-              <Prodact
-                imageurl={monitor}
-                prize="$120"
-                cross="$160"
-                name="HAVIT HV-G92 Gamepad"
-                offer="-40%"
-              />
-              <Prodact
-                imageurl={monitor}
-                prize="$120"
-                cross="$160"
-                name="HAVIT HV-G92 Gamepad"
-                offer="-40%"
-              />
-              <Prodact
-                imageurl={monitor}
-                prize="$120"
-                cross="$160"
-                name="HAVIT HV-G92 Gamepad"
-                offer="-40%"
-              />
-              <Prodact
-                imageurl={monitor}
-                prize="$120"
-                cross="$160"
-                name="HAVIT HV-G92 Gamepad"
-                offer="-40%"
-              />
-              <Prodact
-                imageurl={monitor}
-                prize="$120"
-                cross="$160"
-                name="HAVIT HV-G92 Gamepad"
-                offer="-40%"
-              />
-              <Prodact
-                imageurl={monitor}
-                prize="$120"
-                cross="$160"
-                name="HAVIT HV-G92 Gamepad"
-                offer="-40%"
-              />
-              <Prodact
-                imageurl={monitor}
-                prize="$120"
-                cross="$160"
-                name="HAVIT HV-G92 Gamepad"
-                offer="-40%"
-              />
-              <Prodact
-                imageurl={monitor}
-                prize="$120"
-                cross="$160"
-                name="HAVIT HV-G92 Gamepad"
-                offer="-40%"
-              />
-              <Prodact
-                imageurl={monitor}
-                prize="$120"
-                cross="$160"
-                name="HAVIT HV-G92 Gamepad"
-                offer="-40%"
-              />
-            </Flex>
-            <List className=' flex gap-[10px] mt-[45px]'>
-              <ListItem className=' text-[16px] font-popins leading-[24px] text-white w-[56px] h-[27px] bg-black flex items-center justify-center'>1</ListItem>
-              <ListItem className=' text-[16px] font-popins leading-[24px] text-white w-[56px] h-[27px] bg-black flex items-center justify-center'>2</ListItem>
-              <ListItem className=' text-[16px] font-popins leading-[24px] text-white w-[56px] h-[27px] bg-black flex items-center justify-center'>3</ListItem>
-              <ListItem className=' text-[16px] font-popins leading-[24px] text-white w-[56px] h-[27px] bg-black flex items-center justify-center'>4</ListItem>
-            </List>
+            <ShopByProduct loding={loding} allProduct={allProduct} />
           </div>
         </Flex>
       </Container>
-    </div>
+    </section>
   );
 };
 
