@@ -29,9 +29,10 @@ const Login = () => {
                   .min(6, "Password must be at least 6 characters long")
                   .required("Required"),
               })}
-              onSubmit={(values, { setSubmitting }) => {
+              onSubmit={(values, { setSubmitting, resetForm }) => {
                 console.log(values);
-                // aikhane sob valu pai
+                // Reset the form values
+                resetForm();
                 setSubmitting(false);
               }}
             >

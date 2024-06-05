@@ -46,16 +46,18 @@ const Contact = () => {
               initialValues={{ name: "", email: "", phone: "", message: "" }}
               validationSchema={Yup.object({
                 name: Yup.string().required("Required"),
-                email: Yup.string().email("Invalid email address").required("Required"),
+                email: Yup.string()
+                  .email("Invalid email address")
+                  .required("Required"),
                 phone: Yup.string()
                   .matches(/^[0-9]+$/, "Must be only digits")
                   .required("Required"),
                 message: Yup.string().required("Required"),
               })}
-              onSubmit={(values, { setSubmitting }) => {
+              onSubmit={(values, { setSubmitting, resetForm }) => {
                 setTimeout(() => {
                   console.log(values);
-                  // aikhane sob valu pai
+                  resetForm();
                   setSubmitting(false);
                 }, 400);
               }}
@@ -70,7 +72,11 @@ const Contact = () => {
                         name="name"
                         placeholder="Your Name *"
                       />
-                      <ErrorMessage name="name" component="div" style={{ color: "red" }} />
+                      <ErrorMessage
+                        name="name"
+                        component="div"
+                        style={{ color: "red" }}
+                      />
                     </div>
                     <div>
                       <Field
@@ -79,7 +85,11 @@ const Contact = () => {
                         name="email"
                         placeholder="Your Email *"
                       />
-                      <ErrorMessage name="email" component="div" style={{ color: "red" }} />
+                      <ErrorMessage
+                        name="email"
+                        component="div"
+                        style={{ color: "red" }}
+                      />
                     </div>
                     <div>
                       <Field
@@ -88,7 +98,11 @@ const Contact = () => {
                         name="phone"
                         placeholder="Your Phone *"
                       />
-                      <ErrorMessage name="phone" component="div" style={{ color: "red" }} />
+                      <ErrorMessage
+                        name="phone"
+                        component="div"
+                        style={{ color: "red" }}
+                      />
                     </div>
                   </Flex>
                   <div>
@@ -98,7 +112,11 @@ const Contact = () => {
                       name="message"
                       placeholder="Your Message"
                     />
-                    <ErrorMessage name="message" component="div" style={{ color: "red" }} />
+                    <ErrorMessage
+                      name="message"
+                      component="div"
+                      style={{ color: "red" }}
+                    />
                   </div>
                   <div className="lg:ml-[72%] ml-20">
                     <button
