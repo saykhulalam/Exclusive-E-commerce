@@ -10,23 +10,25 @@ import { FaChevronDown } from "react-icons/fa";
 import Color from "../components/Color";
 import axios from "axios";
 import ShopByProduct from "../components/ShopByProduct";
+import { useDispatch } from "react-redux";
+import productSlice, { productReducer } from "../slices/productSlice";
 
 const Shop = () => {
   let [shopManuShow, setshopManushow] = useState(true);
-  
+  let dispatch = useDispatch();
   let [allProduct, setallProducat] = useState([]);
 
-  let [loding, setLoding]= useState(true)
+  let [loding, setLoding] = useState(true);
   async function getAllProduct() {
     let data = await axios.get("https://dummyjson.com/products/search?q=phone");
     setallProducat(data.data.products);
-    setLoding(false)
+    dispatch(productReducer(data.data.products));
+    setLoding(false);
   }
 
   useEffect(() => {
     getAllProduct();
   }, []);
-
 
   return (
     <section className=" lg:pt-[80px] pt-10">
