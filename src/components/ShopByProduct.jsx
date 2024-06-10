@@ -6,7 +6,7 @@ import ListItem from "./ListItem";
 import { Spin } from "antd";
 import Pagenation from "./Pagenation";
 
-const ShopByProduct = ({ allProduct, loding }) => {
+const ShopByProduct = ({ loding }) => {
   let [parPage, setParPage] = useState(6);
   let handleParpage = (e) => {
     setParPage(e.target.value);
@@ -67,7 +67,7 @@ const ShopByProduct = ({ allProduct, loding }) => {
             </div>
           </Flex>
         ) : (
-          <Pagenation itemsPerPage={parPage} allProduct={allProduct} />
+          <Pagenation itemsPerPage={parPage} />
         )}
       </div>
     </div>

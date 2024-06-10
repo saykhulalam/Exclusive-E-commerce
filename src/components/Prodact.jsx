@@ -1,15 +1,18 @@
 import React from "react";
 import Image from "./Image";
-import { FaStar } from "react-icons/fa";
-import Flex from "./Flex";
 import { FaRegHeart } from "react-icons/fa6";
 import { IoEyeSharp } from "react-icons/io5";
 import { Rate } from "antd";
+import { useNavigate } from "react-router-dom";
 
-const Prodact = ({ imageurl, name, prize, cross, offer,rating }) => {
+const Prodact = ({ imageurl, name, prize, cross, offer,rating,id }) => {
+  let navigate = useNavigate();
+  let handleProductDetails=()=>{
+    navigate(`/productdetails/${id}`);
+  }
   return (
     <>
-      <div className=" w-[270px] rotet:w-[250px] lg:w-[270px] mt-[40px] sm:px-4 md:px-2">
+      <div onClick={handleProductDetails} className=" w-[270px] rotet:w-[250px] lg:w-[270px] mt-[40px] sm:px-4 md:px-2">
         <div className=" bg-[#F5F5F5] w-full h-[250px] rounded-[4px] flex justify-center items-center relative  group-hover:w-[270px] group overflow-hidden">
           <Image src={imageurl} />
           {offer && (

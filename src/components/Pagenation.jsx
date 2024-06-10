@@ -3,9 +3,9 @@ import ReactPaginate from "react-paginate";
 import Prodact from "./Prodact";
 import { useSelector } from "react-redux";
 
-const Pagenation = ({ itemsPerPage, allProduct }) => {
+const Pagenation = ({ itemsPerPage }) => {
   let productDeta = useSelector((state) => state.allproduct.product);
-  const items = allProduct;
+  const items = productDeta;
   function Items({ currentItems }) {
     return (
       <div className=" flex pt-5 flex-wrap justify-between lg:flex-row flex-col items-center sm:flex-row ">
@@ -13,6 +13,7 @@ const Pagenation = ({ itemsPerPage, allProduct }) => {
           currentItems.map((item) => (
             <div>
               <Prodact
+                id={item.id}
                 imageurl={item.thumbnail}
                 prize={`$ ${Math.floor(
                   item.price - (item.discountPercentage / 100) * item.price
@@ -33,7 +34,6 @@ const Pagenation = ({ itemsPerPage, allProduct }) => {
   // (This could be items from props; or items loaded in a local state
   // from an API endpoint with useEffect and useState)
   const endOffset = itemOffset + itemsPerPage;
-  console.log(`Loading items from ${itemOffset} to ${endOffset}`);
   const currentItems = items.slice(itemOffset, endOffset);
   const pageCount = Math.ceil(items.length / itemsPerPage);
 
