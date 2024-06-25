@@ -1,7 +1,7 @@
 import React from 'react'
 
-const Image = ({src, alt, className}) => {
-  return <img src={src} alt={alt} className={className} />;
+const Image = ({src, alt, className,onClick}) => {
+  return <img src={src} alt={alt} onClick={onClick} className={className} />;
 }
 
 export default Image

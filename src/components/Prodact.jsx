@@ -4,17 +4,33 @@ import { FaRegHeart } from "react-icons/fa6";
 import { IoEyeSharp } from "react-icons/io5";
 import { Rate } from "antd";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { cartReducer } from "../slices/productSlice";
 
-const Prodact = ({ imageurl, name, prize, cross, offer,rating,id }) => {
+const Prodact = ({
+  imageurl,
+  name,
+  prize,
+  cross,
+  offer,
+  rating,
+  id,
+  productDetails,
+}) => {
+  let dispatch = useDispatch();
   let navigate = useNavigate();
-  let handleProductDetails=()=>{
+  let handleProductDetails = () => {
     navigate(`/productdetails/${id}`);
-  }
+  };
+  let handleAddToCart = () => {
+    dispatch(cartReducer(productDetails));
+    localStorage.setItem("cart", JSON.stringify(productDetails));
+  };
   return (
     <>
-      <div onClick={handleProductDetails} className=" w-[270px] rotet:w-[250px] lg:w-[270px] mt-[40px] sm:px-4 md:px-2">
+      <div className=" w-[270px] rotet:w-[250px] lg:w-[270px] mt-[40px] sm:px-4 md:px-2">
         <div className=" bg-[#F5F5F5] w-full h-[250px] rounded-[4px] flex justify-center items-center relative  group-hover:w-[270px] group overflow-hidden">
-          <Image src={imageurl} />
+          <Image onClick={handleProductDetails} src={imageurl} />
           {offer && (
             <div className="w-[55px] h-[26px] bg-prymari-red flex items-center justify-center rounded-[4px] absolute left-2 top-2">
               <h4 className="text-[12px] leading-[18px] font-popins font-normal text-white">
@@ -31,9 +47,12 @@ const Prodact = ({ imageurl, name, prize, cross, offer,rating,id }) => {
             </div>
           </div>
           <button className=" group-hover:bottom-0 duration-300 w-full py-[8px] bg-black absolute flex items-center justify-center bottom-[-100%]">
-            <h2 className="text-[16px] text-white leading-[24px] font-popins">
+            <button
+              onClick={handleAddToCart}
+              className="text-[16px] text-white leading-[24px] font-popins"
+            >
               Add To Cart
-            </h2>
+            </button>
           </button>
         </div>
         <div className=" mt-[16px]">

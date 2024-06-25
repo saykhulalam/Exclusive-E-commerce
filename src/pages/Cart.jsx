@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Container from "../components/Container";
 import Breadcrumb from "../components/Breadcrumb";
 import CartItem from "../components/CartItem";
@@ -7,7 +7,11 @@ import ListItem from "../components/ListItem";
 import cartImage from "../assets/cartOne.png";
 import CartButton from "../components/CartButton";
 import Flex from "../components/Flex";
+import { useSelector } from "react-redux";
+
 const Cart = () => {
+  let cartdata = useSelector((state) => state.allproduct.cart);
+
   return (
     <section className="xl:pt-[80px] pt-14">
       <Container>
@@ -28,18 +32,16 @@ const Cart = () => {
             </ListItem>
           </List>
         </div>
-        <CartItem
-          ImageUrl={cartImage}
-          Name="LCD Monitor"
-          Price="650"
-          Total="650"
-        />
-        <CartItem
-          ImageUrl={cartImage}
-          Name="LCD Monitor"
-          Price="650"
-          Total="650"
-        />
+
+        {cartdata.map((item) => (
+          <CartItem
+            ImageUrl={cartImage}
+            Name="LCD Monitor"
+            Price="650"
+            Total="650"
+          />
+        ))}
+
         <Flex className=" justify-between mt-[24px] sm:flex-row xl:flex-row flex-col gap-4">
           <CartButton className="w-[218px]" ButtonName="Return To Shop" />
           <CartButton className="w-[218px]" ButtonName="Update Cart" />

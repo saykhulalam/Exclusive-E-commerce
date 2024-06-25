@@ -14,6 +14,8 @@ const Banner = () => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
     appendDots: (dots) => (
       <div style={{
         margin: "0px", position: 'absolute', left: '50%', transform: 'transLateX(-50%)', bottom:'5%',

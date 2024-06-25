@@ -13,13 +13,14 @@ const Pagenation = ({ itemsPerPage }) => {
           currentItems.map((item) => (
             <div>
               <Prodact
+              productDetails={item}
                 id={item.id}
                 imageurl={item.thumbnail}
                 prize={`$ ${Math.floor(
                   item.price - (item.discountPercentage / 100) * item.price
                 )}`}
                 cross={`$ ${Math.floor(item.price)}`}
-                name={item.brand}
+                name={item.title}
                 offer={`${Math.floor(item.discountPercentage)} %`}
                 rating={item.rating}
               />

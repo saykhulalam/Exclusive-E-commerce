@@ -7,23 +7,24 @@ import AddPoster from "../components/AddPoster";
 import ExploreOurProducts from "../components/ExploreOurProducts";
 import Arrival from "../components/Arrival";
 import Service from "../components/Service";
-
-
-
+import ScrollToTop from "react-scroll-to-top";
 
 
 const Home = () => {
   return (
     <>
-      <Banner/>
-      <FlashSales/>
-      <Category/>
-      <BestSellingProducts/>
-      <AddPoster/>
-      <ExploreOurProducts/>
-      <Arrival/>
-      <Service/>
-      
+      <Banner />
+      <FlashSales />
+      <Category />
+      <BestSellingProducts />
+      <AddPoster />
+      <ExploreOurProducts />
+      <Arrival />
+      <Service />
+      <ScrollToTop
+        style={{ color: "red", width: "50px", paddingLeft: "10px" }}
+        smooth
+      />
     </>
   );
 };

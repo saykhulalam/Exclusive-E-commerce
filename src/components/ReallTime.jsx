@@ -42,7 +42,7 @@ const ReallTime = () => {
 
   return (
     <>
-      <Flex className="items-center gap-[18px] mt-[-35px] lg:pt-[30px]">
+      <Flex className="items-center gap-[18px] mt-[-10px] lg:pt-[30px]">
         <div>
           <h3 className="text-black text-[12px] font-popins font-medium leading-[18px] mb-[4px]">
             Days

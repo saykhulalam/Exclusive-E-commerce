@@ -10,7 +10,9 @@ const Hader = () => {
           <h2 className=" w-[75%] lg:w-full text-center lg:text-[14px] text-[12px] text-[#FAFAFA] leading-[21px] pl-[6px] lg:p-0 font-normal font-popins">
             Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!
             link lin{" "}
-            <Link className="ml-[8px] text-[14px] underline">ShopNow</Link>{" "}
+            <Link to="/Shop" className="ml-[8px] text-[14px] underline">
+              ShopNow
+            </Link>{" "}
           </h2>
           <form className="max-w-sm mx-auto absolute right-0 top-3">
             <select
