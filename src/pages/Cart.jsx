@@ -10,8 +10,8 @@ import Flex from "../components/Flex";
 import { useSelector } from "react-redux";
 
 const Cart = () => {
-  let cartdata = useSelector((state) => state.allproduct.cart);
-
+  let cartdata = useSelector((state) => state.allproduct.ProductCart);
+  console.log(cartdata)
   return (
     <section className="xl:pt-[80px] pt-14">
       <Container>
@@ -33,11 +33,14 @@ const Cart = () => {
           </List>
         </div>
 
-        {cartdata.map((item) => (
+        {cartdata.map((item, index) => (
           <CartItem
-            ImageUrl={cartImage}
-            Name="LCD Monitor"
-            Price="650"
+          qun={item.qun}
+          index={index}
+            id={item.id}
+            ImageUrl={item.thumbnail}
+            Name={item.title}
+            Price={item.price}
             Total="650"
           />
         ))}

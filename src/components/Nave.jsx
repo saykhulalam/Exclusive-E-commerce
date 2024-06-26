@@ -15,9 +15,11 @@ import { RxCrossCircled } from "react-icons/rx";
 import { TbLogout2 } from "react-icons/tb";
 import { FaRegStar } from "react-icons/fa6";
 import Flex from "../components/Flex";
-import Logo from '/public/images/Logo.png'
+import Logo from "/public/images/Logo.png";
+import { useSelector } from "react-redux";
 
 const Nave = () => {
+  let cartData = useSelector((state) => state.allproduct.ProductCart);
   let [manuShow, setManuShow] = useState(false);
   let [accountManuShow, setAccountManuShow] = useState(true);
   let handleManu = () => {
@@ -45,6 +47,9 @@ const Nave = () => {
                   <Link to="/">Home</Link>
                 </ListItem>
                 <ListItem className=" select-none text-white lg:text-black after:duration-500 text-[16px] font-popins leading-[24px] text-black font-normal after:contents-[''] after:w-0 lg:hover:after:w-full duration-500 after:h-[1px] after:absolute after:bg-black after:bottom-0 relative after:left-0 after:top-6 mb-2">
+                  <Link to="/shop">Shop</Link>
+                </ListItem>
+                <ListItem className=" select-none text-white lg:text-black after:duration-500 text-[16px] font-popins leading-[24px] text-black font-normal after:contents-[''] after:w-0 lg:hover:after:w-full duration-500 after:h-[1px] after:absolute after:bg-black after:bottom-0 relative after:left-0 after:top-6 mb-2">
                   <Link to="/Contact">Contact</Link>
                 </ListItem>
                 <ListItem className=" select-none text-white lg:text-black after:duration-500 text-[16px] font-popins leading-[24px] text-black font-normal after:contents-[''] after:w-0 lg:hover:after:w-full duration-500 after:h-[1px] after:absolute after:bg-black after:bottom-0 relative after:left-0 after:top-6 mb-2">
@@ -65,7 +70,12 @@ const Nave = () => {
                 </div>
                 <div className="flex lg:m-0 md:mt-4 gap-[24px] items-center">
                   <FaRegHeart className=" text-[20px] text-white lg:text-black" />
-                  <CiShoppingCart className=" text-[25px] text-white lg:text-black" />
+                  <Link className=" relative" to="/cart">
+                    <CiShoppingCart className=" text-[25px] text-white lg:text-black" />
+                    <p className=" absolute top-[-30px] left-0 bg-red-500 text-white rounded-full w-[30px] h-[30px] flex justify-center items-center">
+                      {cartData.length}
+                    </p>
+                  </Link>
                   <div
                     onClick={handleAccount}
                     className="w-[32px] h-[32px] rounded-full hover:bg-prymari-red flex justify-center items-center group duration-300"

@@ -23,8 +23,8 @@ const Prodact = ({
     navigate(`/productdetails/${id}`);
   };
   let handleAddToCart = () => {
-    dispatch(cartReducer(productDetails));
-    localStorage.setItem("cart", JSON.stringify(productDetails));
+    dispatch(cartReducer({...productDetails, qun: 1}));
+    // localStorage.setItem("cart", JSON.stringify(productDetails));
   };
   return (
     <>
