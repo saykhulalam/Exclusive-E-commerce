@@ -6,8 +6,10 @@ import accountimg from "../assets/accountimg.png";
 import { Link } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 const Login = () => {
+  const auth = getAuth();
   return (
     <section>
       <Container>
@@ -30,10 +32,21 @@ const Login = () => {
                   .required("Required"),
               })}
               onSubmit={(values, { setSubmitting, resetForm }) => {
-                console.log(values);
-                // Reset the form values
-                resetForm();
-                setSubmitting(false);
+                const { email, password } = values;
+                signInWithEmailAndPassword(auth, email, password)
+                  .then((userCredential) => {
+                    // Signed in
+                    const user = userCredential.user;
+                    console.log(user);
+                    // Optionally redirect user or show success message
+                    resetForm();
+                    setSubmitting(false);
+                  })
+                  .catch((error) => {
+                    const errorCode = error.code;
+                    alert(errorCode);
+                    setSubmitting(false);
+                  });
               }}
             >
               {({ isSubmitting }) => (
@@ -77,7 +90,7 @@ const Login = () => {
                       className="text-red-500 text-sm"
                     />
                   </div>
-                  <Flex className=" items-center justify-between">
+                  <Flex className="items-center justify-between">
                     <button
                       type="submit"
                       className="w-[143px] h-[56px] bg-prymari-red rounded-[4px] font-popins font-medium leading-[24px] text-white"

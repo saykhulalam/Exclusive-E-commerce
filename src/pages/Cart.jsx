@@ -11,7 +11,10 @@ import { useSelector } from "react-redux";
 
 const Cart = () => {
   let cartdata = useSelector((state) => state.allproduct.ProductCart);
-  console.log(cartdata)
+  console.log(cartdata);
+
+  const subtotal = cartdata.reduce((acc, item) => acc + item.price * item.qun, 0);
+
   return (
     <section className="xl:pt-[80px] pt-14">
       <Container>
@@ -35,13 +38,14 @@ const Cart = () => {
 
         {cartdata.map((item, index) => (
           <CartItem
-          qun={item.qun}
-          index={index}
+            key={index}
+            qun={item.qun}
+            index={index}
             id={item.id}
             ImageUrl={item.thumbnail}
             Name={item.title}
             Price={item.price}
-            Total="650"
+            Total={item.price * item.qun}
           />
         ))}
 
@@ -70,7 +74,7 @@ const Cart = () => {
                 Subtotal:
               </h3>
               <h3 className="text-[16px] font-popins leading-[24px] text-black font-normal">
-                $1750
+                ${subtotal}
               </h3>
             </div>
             <hr className="mt-[16px]" />
@@ -88,7 +92,7 @@ const Cart = () => {
                 Total:
               </h3>
               <h3 className="text-[16px] font-popins leading-[24px] text-black font-normal">
-                $1750
+                ${subtotal}
               </h3>
             </div>
             <hr className="mt-[16px]" />
