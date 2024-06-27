@@ -22,7 +22,7 @@ const CreateAccount = () => {
       <Container>
         <Flex className="md:flex-row lg:flex-row flex-col justify-between lg:gap-20 md:gap-7 gap-10 items-center">
           <div>
-            <Image src={accountimg} />
+            <Image src={accountimg} alt="Create account" />
           </div>
           <div className="lg:w-[371px] w-[300px] md:mt-8">
             <Formik
@@ -41,13 +41,13 @@ const CreateAccount = () => {
                   .required("Required"),
               })}
               onSubmit={(values, { setSubmitting, resetForm }) => {
-                const { email, password } = values;
+                const { name, email, password } = values;
                 createUserWithEmailAndPassword(auth, email, password)
                   .then((userCredential) => {
                     // Signed up
                     sendEmailVerification(auth.currentUser).then(() => {
                       updateProfile(auth.currentUser, {
-                        displayName: Name,
+                        displayName: name,
                       })
                         .then(() => {
                           const user = userCredential.user;
@@ -58,15 +58,13 @@ const CreateAccount = () => {
                           alert(error);
                         });
                     });
-                    // ...
                   })
                   .catch((error) => {
                     const errorCode = error.code;
                     alert(errorCode);
-                    // ..
+                    setSubmitting(false);
                   });
                 resetForm();
-                setSubmitting(false);
               }}
             >
               {({ isSubmitting }) => (
