@@ -3,12 +3,13 @@ import Container from "./Container";
 import Flex from "./Flex";
 import Image from "./Image";
 import accountimg from "../assets/accountimg.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 const Login = () => {
+  let naviget = useNavigate();
   const auth = getAuth();
   return (
     <section>
@@ -37,10 +38,11 @@ const Login = () => {
                   .then((userCredential) => {
                     // Signed in
                     const user = userCredential.user;
-                    console.log(user);
+                    // alert(user);
                     // Optionally redirect user or show success message
                     resetForm();
                     setSubmitting(false);
+                    naviget("/")
                   })
                   .catch((error) => {
                     const errorCode = error.code;
