@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "./Image";
 import List from "./List";
 import ListItem from "./ListItem";
@@ -8,26 +8,51 @@ import { FaRegHeart } from "react-icons/fa6";
 import { CiShoppingCart } from "react-icons/ci";
 import { TfiMenu } from "react-icons/tfi";
 import { MdOutlineManageAccounts } from "react-icons/md";
-import { Link } from "react-router-dom";
-import { MdManageAccounts } from "react-icons/md";
-import { LuShoppingBag } from "react-icons/lu";
-import { RxCrossCircled } from "react-icons/rx";
-import { TbLogout2 } from "react-icons/tb";
-import { FaRegStar } from "react-icons/fa6";
+import { Link, useLocation } from "react-router-dom";
+import { MdAccountCircle } from "react-icons/md";
+import { MdAttachEmail } from "react-icons/md";
 import Flex from "../components/Flex";
 import Logo from "/public/images/Logo.png";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { IoMdLogIn } from "react-icons/io";
+import { RiLogoutCircleLine } from "react-icons/ri";
+import { getAuth, signOut } from "firebase/auth";
+import { userloginInfo } from "../userSlice";
 
 const Nave = () => {
+  let dispatch = useDispatch();
+  const auth = getAuth();
+  const location = useLocation();
+
+  let handleLogout = () => {
+    signOut(auth)
+      .then(() => {
+        dispatch(userloginInfo(""));
+        localStorage.setItem("user", "");
+      })
+      .catch((error) => {
+        // An error happened.
+      });
+  };
+
+  let userdata = useSelector((state) => state.userlogin.value);
   let cartData = useSelector((state) => state.allproduct.ProductCart);
   let [manuShow, setManuShow] = useState(false);
   let [accountManuShow, setAccountManuShow] = useState(true);
+
   let handleManu = () => {
     setManuShow(!manuShow);
   };
+
   let handleAccount = () => {
     setAccountManuShow(!accountManuShow);
   };
+
+  // Collapse dropdowns on route change
+  useEffect(() => {
+    setManuShow(false);
+    setAccountManuShow(true);
+  }, [location]);
 
   return (
     <>
@@ -90,31 +115,39 @@ const Nave = () => {
               className=" border-[3px] p-[2px] rounded-[4px] text-[40px] lg:hidden"
             />
             <div
-              className={`w-[225px] h-[260px] backdrop-blur-3xl backdrop-saturate-200 backdrop-brightness-50	  absolute lg:right-[250px] md:right-[200px] md:top-[120px] lg:top-[110px] top-[395px] py-[15px] px-[15px] rounded-[4px] rotet:right-5 rotet:top-32 ${
+              className={`py-4 px-7 backdrop-blur-3xl backdrop-saturate-200 backdrop-brightness-50	  absolute lg:right-[250px] md:right-[200px] md:top-[120px] lg:top-[110px] top-[395px] rounded-[4px] rotet:right-5 rotet:top-32 ${
                 accountManuShow ? "hidden" : "block"
               }`}
             >
               <List>
                 <ListItem className=" select-none text-[14px] text-white leading-[21px] font-popins font-normal mb-[18px] flex gap-[16px] items-center">
-                  <MdManageAccounts className="text-[32px] text-white" />
-                  <Link>Manage My Account</Link>
+                  {userdata && (
+                    <MdAccountCircle className="text-[32px] text-white" />
+                  )}
+                  <Link>{userdata && userdata.displayName}</Link>
                 </ListItem>
-                <ListItem className=" select-none text-[14px] text-white leading-[21px] font-popins font-normal mb-[18px] flex gap-[16px] items-center">
-                  <LuShoppingBag className="text-[32px] text-white" />
-                  <Link>My Order</Link>
+                <ListItem className=" select-none text-[13px] text-white leading-[21px] font-popins font-normal mb-[18px] flex gap-[5px] items-center">
+                  {userdata && (
+                    <MdAttachEmail className="text-[32px] text-white" />
+                  )}
+                  <Link>{userdata && userdata.email}</Link>
                 </ListItem>
-                <ListItem className=" select-none text-[14px] text-white leading-[21px] font-popins font-normal mb-[18px] flex gap-[16px] items-center">
-                  <RxCrossCircled className="text-[32px] text-white" />
-                  <Link>My Cancellations</Link>
-                </ListItem>
-                <ListItem className=" select-none text-[14px] text-white leading-[21px] font-popins font-normal mb-[18px] flex gap-[16px] items-center">
-                  <FaRegStar className="text-[32px] text-white" />
-                  <Link>My Reviews</Link>
-                </ListItem>
-                <ListItem className=" select-none text-[14px] text-white leading-[21px] font-popins font-normal mb-[18px] flex gap-[16px] items-center">
-                  <TbLogout2 className="text-[32px] text-white" />
-                  <Link>Logout</Link>
-                </ListItem>
+                {userdata ? (
+                  <ListItem className=" select-none text-[13px] text-white leading-[21px] font-popins font-normal mb-[18px] flex gap-[5px] items-center">
+                    <div
+                      className="flex items-center gap-2"
+                      onClick={handleLogout}
+                    >
+                      <RiLogoutCircleLine className="text-[32px] text-white" />
+                      <Link>logout</Link>
+                    </div>
+                  </ListItem>
+                ) : (
+                  <ListItem className=" select-none text-[13px] text-white leading-[21px] font-popins font-normal mb-[18px] flex gap-[5px] items-center">
+                    <IoMdLogIn className="text-[32px] text-white" />
+                    <Link to="/login">login</Link>
+                  </ListItem>
+                )}
               </List>
             </div>
           </div>

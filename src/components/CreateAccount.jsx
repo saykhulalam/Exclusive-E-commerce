@@ -12,13 +12,49 @@ import {
   createUserWithEmailAndPassword,
   sendEmailVerification,
   updateProfile,
+  GoogleAuthProvider,
+  signInWithPopup,
 } from "firebase/auth";
+import { useDispatch } from "react-redux";
+import { ToastContainer, toast, Bounce } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { userloginInfo } from "../userSlice";
 
 const CreateAccount = () => {
   let navigate = useNavigate();
+  let dispatch = useDispatch();
+  const provider = new GoogleAuthProvider();
+
+  let handleGoogle = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const user = result.user;
+        localStorage.setItem("user", JSON.stringify(user));
+        dispatch(userloginInfo(user));
+        navigate("/");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        console.log(errorCode);
+      });
+  };
+
   const auth = getAuth();
   return (
     <section>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Bounce}
+      />
       <Container>
         <Flex className="md:flex-row lg:flex-row flex-col justify-between lg:gap-20 md:gap-7 gap-10 items-center">
           <div>
@@ -44,24 +80,64 @@ const CreateAccount = () => {
                 const { name, email, password } = values;
                 createUserWithEmailAndPassword(auth, email, password)
                   .then((userCredential) => {
-                    // Signed up
+                    toast.success("Account created successfully!", {
+                      position: "top-center",
+                      autoClose: 5000,
+                      hideProgressBar: false,
+                      closeOnClick: true,
+                      pauseOnHover: true,
+                      draggable: true,
+                      progress: undefined,
+                      theme: "light",
+                      transition: Bounce,
+                    });
                     sendEmailVerification(auth.currentUser).then(() => {
                       updateProfile(auth.currentUser, {
                         displayName: name,
                       })
                         .then(() => {
-                          const user = userCredential.user;
-                          alert("Account created successfully!");
+                          // const user = userCredential.user;
+                          toast.success("Account created successfully!", {
+                            position: "top-center",
+                            autoClose: 5000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            theme: "light",
+                            transition: Bounce,
+                          });
                           navigate("/login");
                         })
                         .catch((error) => {
-                          alert(error);
+                          toast.error(error, {
+                            position: "top-right",
+                            autoClose: 5000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            theme: "light",
+                            transition: Bounce,
+                          });
                         });
                     });
                   })
                   .catch((error) => {
                     const errorCode = error.code;
-                    alert(errorCode);
+                    toast.error(errorCode, {
+                      position: "top-right",
+                      autoClose: 5000,
+                      hideProgressBar: false,
+                      closeOnClick: true,
+                      pauseOnHover: true,
+                      draggable: true,
+                      progress: undefined,
+                      theme: "light",
+                      transition: Bounce,
+                    });
                     setSubmitting(false);
                   });
                 resetForm();
@@ -132,7 +208,10 @@ const CreateAccount = () => {
                 </Form>
               )}
             </Formik>
-            <button className="relative lg:w-[371px] w-[300px] h-[56px] bg-transparent rounded-[4px] text-[16px] font-medium leading-[24px] font-popins text-black mb-[16px] border-[2px] border-[#00000069]">
+            <button
+              onClick={handleGoogle}
+              className="relative lg:w-[371px] w-[300px] h-[56px] bg-transparent rounded-[4px] text-[16px] font-medium leading-[24px] font-popins text-black mb-[16px] border-[2px] border-[#00000069]"
+            >
               <FcGoogle className="text-[24px] absolute lg:left-16 left-8" />{" "}
               Sign up with Google
             </button>

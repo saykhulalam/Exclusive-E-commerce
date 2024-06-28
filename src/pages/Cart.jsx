@@ -4,7 +4,6 @@ import Breadcrumb from "../components/Breadcrumb";
 import CartItem from "../components/CartItem";
 import List from "../components/List";
 import ListItem from "../components/ListItem";
-import cartImage from "../assets/cartOne.png";
 import CartButton from "../components/CartButton";
 import Flex from "../components/Flex";
 import { useSelector } from "react-redux";
@@ -13,7 +12,10 @@ const Cart = () => {
   let cartdata = useSelector((state) => state.allproduct.ProductCart);
   console.log(cartdata);
 
-  const subtotal = cartdata.reduce((acc, item) => acc + item.price * item.qun, 0);
+  const subtotal = cartdata.reduce(
+    (acc, item) => acc + item.price * item.qun,
+    0
+  );
 
   return (
     <section className="xl:pt-[80px] pt-14">

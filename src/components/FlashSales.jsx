@@ -13,6 +13,7 @@ import remortimg from "../assets/remort.png";
 import kaybord from "../assets/kaybord.png";
 import monitor from "../assets/monitor.png";
 import chayer from "../assets/chayer.png";
+import { Link } from "react-router-dom";
 
 const FlashSales = () => {
   function SampleNextArrow(props) {
@@ -141,59 +142,61 @@ const FlashSales = () => {
             prize="$120"
             cross="$160"
             name="HAVIT HV-G92 Gamepad"
-            offer='-40%'
+            offer="-40%"
           />
           <Prodact
             imageurl={kaybord}
             prize="$960"
             cross="$1160"
             name="AK-900 Wired Keyboard"
-            offer='-40%'
+            offer="-40%"
           />
           <Prodact
             imageurl={monitor}
             prize="$370"
             cross="$400"
             name="IPS LCD Gaming Monitor"
-            offer='-40%'
+            offer="-40%"
           />
           <Prodact
             imageurl={chayer}
             prize="$375"
             cross="$400"
             name="S-Series Comfort Chair "
-            offer='-40%'
+            offer="-40%"
           />
           <Prodact
             imageurl={remortimg}
             prize="$120"
             cross="$160"
             name="HAVIT HV-G92 Gamepad"
-            offer='-40%'
+            offer="-40%"
           />
           <Prodact
             imageurl={kaybord}
             prize="$960"
             cross="$1160"
             name="AK-900 Wired Keyboard"
-            offer='-40%'
+            offer="-40%"
           />
           <Prodact
             imageurl={monitor}
             prize="$370"
             cross="$400"
             name="IPS LCD Gaming Monitor"
-            offer='-40%'
+            offer="-40%"
           />
           <Prodact
             imageurl={chayer}
             prize="$375"
             cross="$400"
             name="S-Series Comfort Chair "
-            offer='-40%'
+            offer="-40%"
           />
         </Slider>
-        <VewallButton />
+        <Link to="/shop">
+          <VewallButton />
+        </Link>
       </Container>
     </section>
   );

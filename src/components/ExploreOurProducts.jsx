@@ -10,6 +10,8 @@ import "slick-carousel/slick/slick.css";
 import { FaAngleRight } from "react-icons/fa6";
 import { FaAngleLeft } from "react-icons/fa6";
 import VewallButton from "../components/VewallButton";
+import { Link } from "react-router-dom";
+
 const ExploreOurProducts = () => {
   function SampleNextArrow(props) {
     const { className, style, onClick } = props;
@@ -206,7 +208,9 @@ const ExploreOurProducts = () => {
             />
           </Slider>
         </div>
-        <VewallButton />
+        <Link to="/shop">
+          <VewallButton />
+        </Link>
       </Container>
     </section>
   );

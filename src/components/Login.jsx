@@ -7,12 +7,30 @@ import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { ToastContainer, toast, Bounce } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useDispatch } from "react-redux";
+import userSlice, { userloginInfo } from "../userSlice";
 
 const Login = () => {
+  let dispatch = useDispatch();
   let naviget = useNavigate();
   const auth = getAuth();
   return (
     <section>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Bounce}
+      />
       <Container>
         <Flex className="md:flex-row lg:flex-row flex-col justify-between md:gap-7 gap-10 items-center">
           <div>
@@ -36,17 +54,39 @@ const Login = () => {
                 const { email, password } = values;
                 signInWithEmailAndPassword(auth, email, password)
                   .then((userCredential) => {
-                    // Signed in
+                    toast.success("login successfully!", {
+                      position: "top-center",
+                      autoClose: 5000,
+                      hideProgressBar: false,
+                      closeOnClick: true,
+                      pauseOnHover: true,
+                      draggable: true,
+                      progress: undefined,
+                      theme: "light",
+                      transition: Bounce,
+                    });
                     const user = userCredential.user;
+                    dispatch(userloginInfo(user));
+                    localStorage.setItem("user", JSON.stringify(user));
                     // alert(user);
                     // Optionally redirect user or show success message
                     resetForm();
                     setSubmitting(false);
-                    naviget("/")
+                    naviget("/");
                   })
                   .catch((error) => {
                     const errorCode = error.code;
-                    alert(errorCode);
+                    toast.error(errorCode, {
+                      position: "top-right",
+                      autoClose: 5000,
+                      hideProgressBar: false,
+                      closeOnClick: true,
+                      pauseOnHover: true,
+                      draggable: true,
+                      progress: undefined,
+                      theme: "light",
+                      transition: Bounce,
+                    });
                     setSubmitting(false);
                   });
               }}
