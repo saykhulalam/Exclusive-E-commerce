@@ -23,10 +23,10 @@ const BannerList = () => {
         } lg:block absolute z-20 backdrop-blur-xl lg:backdrop-brightness-200 backdrop-brightness-50 lg:bg-transparent lg:p-0 lg:pr-4 p-4 rounded-lg`}
       >
         <ListItem className=" text-white text-[18px] font-popins font-normal leading-[24px] lg:text-black mb-[16px] flex gap-[35px] items-center">
-          Woman’s Fashion {true ? <FaAngleRight /> : ""}
+          Woman-s Fashion {true ? <FaAngleRight /> : ""}
         </ListItem>
         <ListItem className=" text-white w-[217px] text-[18px] font-popins font-normal leading-[24px] lg:text-black mb-[16px] flex gap-[20px] items-center justify-between">
-          Men’s Fashion{true ? <FaAngleRight /> : ""}
+          Men-s Fashion{true ? <FaAngleRight /> : ""}
         </ListItem>
         <ListItem className=" text-white  text-[18px] font-popins font-normal leading-[24px] lg:text-black mb-[16px] flex gap-[35px] items-center justify-between">
           Electronics {false ? <FaAngleRight /> : ""}
